@@ -33,7 +33,7 @@
         <Il2CppPath>$(TheLongDarkPath)/MelonLoader/Il2CppAssemblies</Il2CppPath>
         <ModsPath>$(TheLongDarkPath)/Mods</ModsPath>
         <AssemblySearchPaths>$(AssemblySearchPaths);$(MelonLoaderPath);$(ManagedPath);$(Il2CppPath);$(ModsPath);</AssemblySearchPaths>
-        <AssemblyName>TinyTweaks-CapFeelsLikeTemp</AssemblyName>
+        <AssemblyName>[TinyTweaks]-DroppedObjectOrientation</AssemblyName>
     </PropertyGroup>
 
     <!--This tells the compiler to not include referenced assemblies in the output folder.-->
@@ -52,9 +52,6 @@
         <Reference Include="AssetsTools.NET" />
         <Reference Include="Il2CppInterop.Common" />
         <Reference Include="Il2CppInterop.Runtime" />
-        <Reference Include="ModSettings">
-          <HintPath>C:\SteamLibrary\steamapps\common\TheLongDark\Mods\ModSettings.dll</HintPath>
-        </Reference>
         <Reference Include="Tomlet" />
         <Reference Include="Assembly-CSharp-firstpass" />
         <Reference Include="Assembly-CSharp" />

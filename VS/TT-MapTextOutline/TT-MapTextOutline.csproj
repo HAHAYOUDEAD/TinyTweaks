@@ -33,7 +33,7 @@
         <Il2CppPath>$(TheLongDarkPath)/MelonLoader/Il2CppAssemblies</Il2CppPath>
         <ModsPath>$(TheLongDarkPath)/Mods</ModsPath>
         <AssemblySearchPaths>$(AssemblySearchPaths);$(MelonLoaderPath);$(ManagedPath);$(Il2CppPath);$(ModsPath);</AssemblySearchPaths>
-        <AssemblyName>[TinyTweaks]-MapTextOuline</AssemblyName>
+        <AssemblyName>TinyTweaks-MapTextOuline</AssemblyName>
     </PropertyGroup>
 
     <!--This tells the compiler to not include referenced assemblies in the output folder.-->
