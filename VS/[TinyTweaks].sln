@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-CapFeelsLikeTemp", "TT-CapFeelsLikeTemp\TT-CapFeelsLikeTemp.csproj", "{361C90A2-8A5A-48C8-952B-1BFD019C7922}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-DroppedObjectOrientation", "TT-DroppedObjectOrientation\TT-DroppedObjectOrientation.csproj", "{1E2F2869-AB78-4353-81C6-FF3210FD3CAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-ExtendedFOVSlider", "TT-ExtendedFOVSlider\TT-ExtendedFOVSlider.csproj", "{2E96766B-55D2-4A65-B9D9-1CDADE9308DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-MapTextOutline", "TT-MapTextOutline\TT-MapTextOutline.csproj", "{60F01174-6134-463F-89FC-B504B2FEBBC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-RespawnablePlants", "TT-RespawnablePlants\TT-RespawnablePlants.csproj", "{02E02DC9-B0AF-46D8-B1B7-112E9718D86E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Global", "Global\Global.shproj", "{3452D832-E7D5-4775-A012-98B105F0E47B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-BuryHumanCorpses", "TT-BuryHumanCorpses\TT-BuryHumanCorpses.csproj", "{7F362F48-5CF0-4E84-BA4E-212944D479FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{361C90A2-8A5A-48C8-952B-1BFD019C7922}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{361C90A2-8A5A-48C8-952B-1BFD019C7922}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{361C90A2-8A5A-48C8-952B-1BFD019C7922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361C90A2-8A5A-48C8-952B-1BFD019C7922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2F2869-AB78-4353-81C6-FF3210FD3CAC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2F2869-AB78-4353-81C6-FF3210FD3CAC}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{1E2F2869-AB78-4353-81C6-FF3210FD3CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2F2869-AB78-4353-81C6-FF3210FD3CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E96766B-55D2-4A65-B9D9-1CDADE9308DB}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{2E96766B-55D2-4A65-B9D9-1CDADE9308DB}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{2E96766B-55D2-4A65-B9D9-1CDADE9308DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E96766B-55D2-4A65-B9D9-1CDADE9308DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F01174-6134-463F-89FC-B504B2FEBBC9}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{60F01174-6134-463F-89FC-B504B2FEBBC9}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{60F01174-6134-463F-89FC-B504B2FEBBC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F01174-6134-463F-89FC-B504B2FEBBC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E02DC9-B0AF-46D8-B1B7-112E9718D86E}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{02E02DC9-B0AF-46D8-B1B7-112E9718D86E}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{02E02DC9-B0AF-46D8-B1B7-112E9718D86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E02DC9-B0AF-46D8-B1B7-112E9718D86E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F362F48-5CF0-4E84-BA4E-212944D479FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F362F48-5CF0-4E84-BA4E-212944D479FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F362F48-5CF0-4E84-BA4E-212944D479FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F362F48-5CF0-4E84-BA4E-212944D479FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7ACA0A64-4B89-4CC1-B280-B78DA610D766}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Global\Global.projitems*{02e02dc9-b0af-46d8-b1b7-112e9718d86e}*SharedItemsImports = 5
+		Global\Global.projitems*{1e2f2869-ab78-4353-81c6-ff3210fd3cac}*SharedItemsImports = 5
+		Global\Global.projitems*{2e96766b-55d2-4a65-b9d9-1cdade9308db}*SharedItemsImports = 5
+		Global\Global.projitems*{3452d832-e7d5-4775-a012-98b105f0e47b}*SharedItemsImports = 13
+		Global\Global.projitems*{361c90a2-8a5a-48c8-952b-1bfd019c7922}*SharedItemsImports = 5
+		Global\Global.projitems*{60f01174-6134-463f-89fc-b504b2febbc9}*SharedItemsImports = 5
+		Global\Global.projitems*{7f362f48-5cf0-4e84-ba4e-212944d479fa}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal
