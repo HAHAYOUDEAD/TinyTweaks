@@ -2,11 +2,11 @@
 Assortment of tiniest mods, too small to create separate repositories
 
 ## :red_car: Extended FOV
-Extends FOV slider to 130
+Extends FOV slider to 150
 
 _Has no requirements_
 
-## :older_woman: Fix dropped objects orientation
+## :older_woman: Correct drop orientation
 Flips wooden matches and the rifle when dropped(because yes, it was incorrect)
 
 _Has no requirements_
@@ -21,9 +21,12 @@ Mainly for challenge runs I guess? It was a request from community, so here you 
 
 _Requires [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
 
-## :herb: Respawn plants 
+## :herb: Plants regrow 
 Respawn plants after certain amount of time
 
 _Requires [ModData](https://github.com/dommrogers/ModData/releases) and [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
 
-## 
+## :headstone: Bury corpses
+Allows you to get rid of human corpses by right-clicking on them
+
+_Has no requirements_
