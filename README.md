@@ -29,4 +29,4 @@ _Requires [ModData](https://github.com/dommrogers/ModData/releases) and [ModSett
 ## :headstone: Bury corpses
 Allows you to get rid of human corpses by right-clicking on them
 
-_Has no requirements_
+_Requires [ModData](https://github.com/dommrogers/ModData/releases)_
