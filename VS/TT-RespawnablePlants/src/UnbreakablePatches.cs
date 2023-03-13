@@ -45,14 +45,6 @@ namespace TinyTweaks
 
                         if (entry.Value + hoursToRespawn < GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused())
                         {
-                            /*
-                            Harvestable h = HarvestableManager.FindHarvestableByGuid(entry.Key);
-                            if (h.gameObject.GetComponent<Renderer>().isVisible)
-                            {
-                                MelonLogger.Msg("respawn time for " + entry.Key + ", but player can see it");
-                                continue;
-                            }
-                            */
                             HarvestableManager.FindHarvestableByGuid(entry.Key).Respawn();
                             harvestedPlants[scene].Remove(entry.Key);
                         }
@@ -103,11 +95,6 @@ namespace TinyTweaks
                 string serializedSaveData = JSON.Dump(data);
 
                 dataManager.Save(serializedSaveData, saveDataTag);
-
-
-                //Utility.SaveData(slot, saveDataTag, data);
-
-
             }
         }
 
@@ -121,8 +108,6 @@ namespace TinyTweaks
                 RegrowSaveData? data = null;
 
                 if (!string.IsNullOrEmpty(serializedSaveData)) JSON.MakeInto(JSON.Load(serializedSaveData), out data);
-
-                //Utility.TryLoadData(name, saveDataTag, out RegrowSaveData data);
 
                 if (data != null && data.dictionarySaveProxy != null)
                 {

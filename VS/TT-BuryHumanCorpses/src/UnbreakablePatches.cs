@@ -1,17 +1,36 @@
 ﻿using ModData;
 using MelonLoader.TinyJSON;
 using System.Reflection.Metadata;
+using Il2Cpp;
+
 
 
 namespace TinyTweaks
 { 
     class BuryHumanCorpses : MelonMod
     {
+        public static readonly string saveDataTag = "buryCorpses";
+        public static ModDataManager dataManager = new ModDataManager("TinyTweaks");
+
         public static readonly int hoursToBury = 1;
         private static readonly float secondsToInteract = 3f;
 
+        public static Dictionary<string, List<string>> buriedCorpses = new Dictionary<string, List<string>>();
+
         private static bool interrupted;
         public static bool inProgress;
+
+        public override void OnSceneWasInitialized(int buildIndex, string sceneName)
+        {
+            if (Utility.IsScenePlayable(sceneName) && buriedCorpses.ContainsKey(sceneName))
+            {
+
+                foreach (string s in buriedCorpses[sceneName])
+                {
+                    ContainerManager.FindContainerByGuid(s).gameObject.SetActive(false);
+                }
+            }
+        }
 
         public static IEnumerator BuryCorpse(GameObject corpse)
         {
@@ -21,7 +40,14 @@ namespace TinyTweaks
             inProgress = true;
             InterfaceManager.GetPanel<Panel_GenericProgressBar>().Launch("Bury a friend", secondsToInteract, hoursToBury * 60f, 0, true, null);
             while (inProgress) yield return new WaitForEndOfFrame();
-            if (!interrupted) corpse.active = false;
+            if (!interrupted)
+            {
+                corpse.active = false;
+                string guid = ObjectGuid.GetGuidFromGameObject(corpse.gameObject);
+                if (buriedCorpses.ContainsKey(GameManager.m_ActiveScene)) buriedCorpses[GameManager.m_ActiveScene].Add(guid);
+                else buriedCorpses[GameManager.m_ActiveScene] = new List<string> { guid };
+
+            }
 
             yield break;
         }
@@ -90,38 +116,27 @@ namespace TinyTweaks
         }
 
 
-
-        /*
-        [HarmonyPatch(typeof(TimeOfDay), nameof(TimeOfDay.Accelerate))]
-        public class CatchAltInteractionWithCorpse1
+        [HarmonyPatch(typeof(SaveGameSystem), nameof(SaveGameSystem.SaveSceneData))]
+        private static class SaveHarvestTimes
         {
-
-            public static void Prefix(ref float realTimeSeconds, ref float gameTimeHours, ref bool doFadeToBlack)
+            internal static void Prefix(ref SlotData slot)
             {
+                string serializedSaveData = JSON.Dump(buriedCorpses);
 
-                if (inProgress)
-                {
-                    InterfaceManager.GetPanel<Panel_HUD>().m_AccelTimePopup.m_NonFullFadeValue = desiredAlpha;
-                    doFadeToBlack = true;
-                }
-
-            }
-
-            public static void Postfix()
-            {
-                if (inProgress)
-                {
-                    InterfaceManager.GetPanel<Panel_HUD>().m_AccelTimePopup.m_NonFullFadeValue = defaultAlpha;
-                    inProgress = false;
-                }
-                
+                dataManager.Save(serializedSaveData, saveDataTag);
             }
         }
-        */
 
 
+        [HarmonyPatch(typeof(SaveGameSystem), nameof(SaveGameSystem.LoadSceneData))]
+        private static class LoadHarvestTimes
+        {
+            internal static void Postfix(ref string name)
+            {
+                string? serializedSaveData = dataManager.Load(saveDataTag);
 
-
+                if (!string.IsNullOrEmpty(serializedSaveData)) JSON.MakeInto(JSON.Load(serializedSaveData), out buriedCorpses);
+            }
+        }
     }
-
 }
