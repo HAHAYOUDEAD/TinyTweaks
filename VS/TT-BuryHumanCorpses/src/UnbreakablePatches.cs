@@ -1,9 +1,5 @@
 ﻿using ModData;
 using MelonLoader.TinyJSON;
-using System.Reflection.Metadata;
-using Il2Cpp;
-
-
 
 namespace TinyTweaks
 { 
@@ -20,18 +16,6 @@ namespace TinyTweaks
         private static bool interrupted;
         public static bool inProgress;
 
-        public override void OnSceneWasInitialized(int buildIndex, string sceneName)
-        {
-            if (Utility.IsScenePlayable(sceneName) && buriedCorpses.ContainsKey(sceneName))
-            {
-
-                foreach (string s in buriedCorpses[sceneName])
-                {
-                    ContainerManager.FindContainerByGuid(s).gameObject.SetActive(false);
-                }
-            }
-        }
-
         public static IEnumerator BuryCorpse(GameObject corpse)
         {
             GameManager.GetPlayerVoiceComponent().BlockNonCriticalVoiceForDuration(10f);
@@ -43,12 +27,13 @@ namespace TinyTweaks
             if (!interrupted)
             {
                 corpse.active = false;
+                Carrion crows = corpse.GetComponent<Carrion>();
+                if (crows != null) crows.Destroy();
                 string guid = ObjectGuid.GetGuidFromGameObject(corpse.gameObject);
                 if (buriedCorpses.ContainsKey(GameManager.m_ActiveScene)) buriedCorpses[GameManager.m_ActiveScene].Add(guid);
                 else buriedCorpses[GameManager.m_ActiveScene] = new List<string> { guid };
 
             }
-
             yield break;
         }
 
@@ -63,38 +48,32 @@ namespace TinyTweaks
             {
                 return false;
             }
-
             return true;
         }
-        
-        [HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.InteractiveObjectsProcessAltFire))] 
+
+
+        [HarmonyPatch(typeof(InputManager), nameof(InputManager.ExecuteAltFire))] 
         public class CatchAltInteractionWithCorpse
         {
-            private static GameObject corpse;
-
             public static void Prefix()
             {
-                corpse = Utility.GetGameObjectUnderCrosshair();
+                if (!GameManager.GetPlayerManagerComponent()) return;
 
+                GameObject corpse = Utility.GetGameObjectUnderCrosshair();
                 if (!IsCorpse(corpse)) return;
-
                 MelonCoroutines.Start(BuryCorpse(corpse));
-
             }
         }
 
         [HarmonyPatch(typeof(Panel_HUD), nameof(Panel_HUD.SetHoverText))] 
         public class ShowButtonPrompts
         {
-
             public static void Prefix(ref GameObject itemUnderCrosshairs)
             {
-
                 if (!IsCorpse(itemUnderCrosshairs)) return;
 
                 InterfaceManager.GetPanel<Panel_HUD>().m_EquipItemPopup.enabled = true;
                 InterfaceManager.GetPanel<Panel_HUD>().m_EquipItemPopup.ShowGenericPopupWithDefaultActions("Search", "Bury");
-
             }
         }
 
@@ -102,16 +81,13 @@ namespace TinyTweaks
         [HarmonyPatch(typeof(Panel_GenericProgressBar), nameof(Panel_GenericProgressBar.ProgressBarEnded))] 
         public class ProgressBarCallback
         {
-
             public static void Prefix(ref bool success, ref bool playerCancel)
             {
-
                 if (inProgress)
                 {
                     if (!success) interrupted = true;
                     inProgress = false;
                 }
-
             }
         }
 
@@ -136,6 +112,14 @@ namespace TinyTweaks
                 string? serializedSaveData = dataManager.Load(saveDataTag);
 
                 if (!string.IsNullOrEmpty(serializedSaveData)) JSON.MakeInto(JSON.Load(serializedSaveData), out buriedCorpses);
+
+                if (buriedCorpses.ContainsKey(GameManager.m_ActiveScene))
+                {
+                    foreach (string s in buriedCorpses[GameManager.m_ActiveScene])
+                    {
+                        ContainerManager.FindContainerByGuid(s)?.gameObject.SetActive(false);
+                    }
+                }
             }
         }
     }
