@@ -1,6 +1,16 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
+## :running_woman: Run with lantern
+Removes lantern animation restrictions: doesn't lock camera and allows movement
+
+_Has no requirements_
+
+## :clock530: Pause on radial
+Slows down time on radial menu
+
+_Has no requirements_
+
 ## :red_car: Extended FOV
 Extends FOV slider to 150
 
