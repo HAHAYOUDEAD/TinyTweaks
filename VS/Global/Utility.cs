@@ -5,7 +5,7 @@ namespace TinyTweaks
 {
     public class Utility
     {
-        public const string globalModVersion = "1.0.2";
+        public const string globalModVersion = "1.1.0";
         public static bool IsScenePlayable()
         {
             return !(string.IsNullOrEmpty(GameManager.m_ActiveScene) || GameManager.m_ActiveScene.Contains("MainMenu") || GameManager.m_ActiveScene == "Boot" || GameManager.m_ActiveScene == "Empty");
