@@ -9,7 +9,7 @@ namespace TinyTweaks
         public Dictionary<string, Dictionary<string, float>> dictionarySaveProxy;
     }
 
-    class RespawnablePlants : MelonMod
+    public class RespawnablePlants : MelonMod
     {
         public static readonly string saveDataTag = "regrowPlants";
         public static Dictionary<string, Dictionary<string, float>> harvestedPlants = new Dictionary<string, Dictionary<string, float>>(); // scene, dict<guid, time of harvest> 
@@ -41,7 +41,21 @@ namespace TinyTweaks
                 {
                     foreach (KeyValuePair<string, float> entry in harvestedPlants[scene])
                     {
-                        float hoursToRespawn = Settings.options.respawnTime * 24f;
+                        float randomized = Settings.options.respawnTime * 24f;
+                        if (Settings.options.randomizeRespawnTime != 0)
+                        {
+                            if (Settings.options.randomizeRespawnTime == 1) // controlled random
+                            {
+                                int range = Mathf.CeilToInt(randomized * 0.2f);
+                                randomized = Mathf.Clamp(randomized + new System.Random(entry.Key.GetHashCode()).Next(-range, range), 1f, 365f * 24f);
+                            }
+                            if (Settings.options.randomizeRespawnTime == 2) // wild random
+                            {
+                                randomized = new System.Random(entry.Key.GetHashCode()).Next(0, 365 * 24);
+                            }
+
+                        }
+                        float hoursToRespawn = randomized;
 
                         if (entry.Value + hoursToRespawn < GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused())
                         {
@@ -71,7 +85,7 @@ namespace TinyTweaks
         {
             internal static void Postfix(ref Harvestable __instance)
             {
-                if (__instance.m_Harvested)
+                if (__instance.m_Harvested && __instance.RegisterAsPlantsHaversted)
                 {
                     string scene = GameManager.m_ActiveScene;
                     if (!harvestedPlants.ContainsKey(scene))

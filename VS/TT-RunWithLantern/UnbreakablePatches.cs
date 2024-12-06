@@ -19,7 +19,7 @@
         {
             internal static bool Prefix(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
             {
-                if (stateInfo.IsName("Lantern_Prepare") || stateInfo.IsName("Lantern_Idle")) return false;
+                if (stateInfo.IsName("Lantern_Prepare") || stateInfo.IsName("Lantern_Idle") || stateInfo.IsName("Lantern_Extinguish")) return false;
                 else return true;
             }
         }
@@ -29,7 +29,7 @@
         {
             internal static bool Prefix(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
             {
-                if (stateInfo.IsName("Lantern_Prepare") || stateInfo.IsName("Lantern_Idle")) return false;
+                if (stateInfo.IsName("Lantern_Prepare") || stateInfo.IsName("Lantern_Idle") || stateInfo.IsName("Lantern_Extinguish")) return false;
                 else return true;
             }
         }

@@ -18,9 +18,19 @@ namespace TinyTweaks
         [Section("Respawnable Plants")]
 
         [Name("Respawn time")]
-        [Description("In days.")]
+        [Description("In days")]
         [Slider(1, 365)]
         public int respawnTime = 45;
+
+        [Name("Radndomize respawn time")]
+        [Description("Controlled random considers previous setting")]
+        [Choice(new string[]
+        {
+            "No random",
+            "Controlled random",
+            "Wild random"
+        })]
+        public int randomizeRespawnTime;
 
 
         protected override void OnConfirm()
