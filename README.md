@@ -1,6 +1,12 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
+
+## :mountain_snow: Fall Death Goat
+Disables fall death triggers, but increases fall damage (can be tweaked)
+
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
+
 ## :running_woman: Run with lantern
 Removes lantern animation restrictions: doesn't lock camera and allows movement
 
@@ -24,12 +30,12 @@ _Has no requirements_
 ## :crayon: Map text outline
 Creates an outline for labels on the map, so you can actually read what they say. Has a few options
 
-_Requires [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
 
 ## :hot_face: Cap 'Feels like' temperature
 Mainly for challenge runs I guess? It was a request from community, so here you go
 
-_Requires [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
 
 ## :herb: Plants regrow 
 Respawn plants after certain amount of time
