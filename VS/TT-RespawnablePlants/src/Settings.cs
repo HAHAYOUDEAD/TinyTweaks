@@ -22,7 +22,7 @@ namespace TinyTweaks
         [Slider(1, 365)]
         public int respawnTime = 45;
 
-        [Name("Radndomize respawn time")]
+        [Name("Randomize respawn time")]
         [Description("Controlled random considers previous setting")]
         [Choice(new string[]
         {

@@ -103,7 +103,7 @@ namespace TinyTweaks
         [HarmonyPatch(typeof(SaveGameSystem), nameof(SaveGameSystem.SaveSceneData))]
         private static class SaveHarvestTimes
         {
-            internal static void Prefix(ref SlotData slot)
+            internal static void Postfix(ref SlotData slot)
             {
                 RegrowSaveData data = new RegrowSaveData() { dictionarySaveProxy = harvestedPlants };
                 string serializedSaveData = JSON.Dump(data);
