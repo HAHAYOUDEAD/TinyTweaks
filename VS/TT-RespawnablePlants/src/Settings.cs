@@ -18,12 +18,12 @@ namespace TinyTweaks
         [Section("Respawnable Plants")]
 
         [Name("Respawn time")]
-        [Description("In days")]
+        [Description("In days, per individual plant")]
         [Slider(1, 365)]
         public int respawnTime = 45;
 
         [Name("Randomize respawn time")]
-        [Description("Controlled random considers previous setting")]
+        [Description("Controlled random considers chosen respawn time")]
         [Choice(new string[]
         {
             "No random",

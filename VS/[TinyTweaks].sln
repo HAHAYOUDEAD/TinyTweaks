@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-PauseOnRadial", "TT-Paus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-FallDeathGoat", "TT-DeathTriggerGoat\TT-FallDeathGoat.csproj", "{B5303E1E-0539-4B78-ADB5-BF1BAC915696}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-WakeUpCall", "TT-WakeUpCall\TT-WakeUpCall.csproj", "{87EC8BF9-67F4-4DAE-A104-5DFA56472BC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{B5303E1E-0539-4B78-ADB5-BF1BAC915696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5303E1E-0539-4B78-ADB5-BF1BAC915696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5303E1E-0539-4B78-ADB5-BF1BAC915696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87EC8BF9-67F4-4DAE-A104-5DFA56472BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EC8BF9-67F4-4DAE-A104-5DFA56472BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EC8BF9-67F4-4DAE-A104-5DFA56472BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EC8BF9-67F4-4DAE-A104-5DFA56472BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		Global\Global.projitems*{5c20a6be-fd97-46c2-a8a8-607ba9d4172d}*SharedItemsImports = 5
 		Global\Global.projitems*{60f01174-6134-463f-89fc-b504b2febbc9}*SharedItemsImports = 5
 		Global\Global.projitems*{7f362f48-5cf0-4e84-ba4e-212944d479fa}*SharedItemsImports = 5
+		Global\Global.projitems*{87ec8bf9-67f4-4dae-a104-5dfa56472bc3}*SharedItemsImports = 5
 		Global\Global.projitems*{b5303e1e-0539-4b78-adb5-bf1bac915696}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
