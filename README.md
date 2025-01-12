@@ -1,6 +1,10 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
+## :alarm_clock: Wakeup Call
+Wake up at will. Also has an option to wake up when aurora starts
+
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
 
 ## :mountain_snow: Fall Death Goat
 Disables fall death triggers, but increases fall damage (can be tweaked)
