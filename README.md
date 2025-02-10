@@ -46,7 +46,9 @@ Respawn plants after certain amount of time
 
 _Requires [ModData](https://github.com/dommrogers/ModData/releases) and [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
 
-## :headstone: Bury corpses
+## :headstone: Bury corpses 
+> still works but redundant since the same functionality is now in Safehouse Customization
+
 Allows you to get rid of human corpses by right-clicking on them
 
 _Requires [ModData](https://github.com/dommrogers/ModData/releases)_
