@@ -85,16 +85,27 @@ namespace TinyTweaks
         {
             internal static void Postfix(ref Harvestable __instance)
             {
+              bool respawnAllowed = false;
                 if (__instance.m_Harvested && __instance.RegisterAsPlantsHaversted)
                 {
                     string scene = GameManager.m_ActiveScene;
-                    if (!harvestedPlants.ContainsKey(scene))
+                    if (Settings.options.limitRegions == 0 )
                     {
-                        harvestedPlants.Add(scene, new Dictionary<string, float>());
+                      respawnAllowed = true;
                     }
+                    else if (Settings.options.limitRegions == 1 && (scene == "AshCanyonRegion" || scene == "RiverValleyRegion" || scene == "MiningRegion"))
+                    {
+                      respawnAllowed = true;
+                    }
+                    if (respawnAllowed) {
+                      if (!harvestedPlants.ContainsKey(scene))
+                      {
+                          harvestedPlants.Add(scene, new Dictionary<string, float>());
+                      }
 
-                    string guid = ObjectGuid.GetGuidFromGameObject(__instance.gameObject);
-                    harvestedPlants[scene][guid] = GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused();
+                      string guid = ObjectGuid.GetGuidFromGameObject(__instance.gameObject);
+                      harvestedPlants[scene][guid] = GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused();
+                    }
                 }
             }
         }

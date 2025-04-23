@@ -32,6 +32,13 @@ namespace TinyTweaks
         })]
         public int randomizeRespawnTime;
 
+        [Name("Respawn regions")]
+        [Description("Limit respawn to certian regions.\n Enabling regions mid-game will not respawn already harvested plants.")]
+        [Choice(new string[] {
+          "All",
+          "Limited"
+        })]
+        public int limitRegions;
 
         protected override void OnConfirm()
         {

@@ -45,6 +45,8 @@
     </ItemDefinitionGroup>
     <ItemGroup>
       <PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.35.0" />
+      <PackageReference Include="stblade.Modding.TLD.ModData" Version="1.5.1"/>
+      <PackageReference Include="STBlade.Modding.TLD.ModSettings" Version="1.9.0" />
     </ItemGroup>
 
     <!--This is the list of assemblies that the mod references. Most of these are unnecessary for normal mods, but are included here for completeness.-->
