@@ -1,5 +1,7 @@
 ﻿using ModData;
-using MelonLoader.TinyJSON;
+//using MelonLoader.TinyJSON;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using TinyTweaks;
 
 namespace TinyTweaks
@@ -12,7 +14,9 @@ namespace TinyTweaks
     public class RespawnablePlants : MelonMod
     {
         public static readonly string saveDataTag = "regrowPlants";
-        public static Dictionary<string, Dictionary<string, float>> harvestedPlants = new Dictionary<string, Dictionary<string, float>>(); // scene, dict<guid, time of harvest> 
+        public static Dictionary<string, Dictionary<string, float>> harvestedPlants = new (); // scene, dict<guid, time of harvest> 
+        public static Dictionary<string, float> retroactivePending = new (); // guid, time of harvest
+        private static string lastScene = "";
         private static float coroutineUpdateInterval = 30f;// in seconds;
         public static object routine;
 
@@ -21,6 +25,11 @@ namespace TinyTweaks
         public override void OnInitializeMelon()
         {
             Settings.OnLoad();
+        }
+
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        {
+            retroactivePending.Clear();
         }
 
         public static IEnumerator CheckHarvestablesForRespawn()
@@ -69,7 +78,28 @@ namespace TinyTweaks
             yield break;
         }
 
-
+        /*
+        private static void AddRetroactivelyCollectedPlants()
+        {
+            if (retroactivePending.Count == 0)
+            {
+                return;
+            }
+            string scene = GameManager.m_ActiveScene;
+            if (!harvestedPlants.ContainsKey(scene))
+            {
+                harvestedPlants.Add(scene, new Dictionary<string, float>());
+            }
+            foreach (KeyValuePair<string, float> entry in retroactivePending)
+            {
+                if (!harvestedPlants[scene].ContainsKey(entry.Key))
+                {
+                    harvestedPlants[scene][entry.Key] = entry.Value;
+                }
+            }
+            retroactivePending.Clear();
+        }
+        */
 
         [HarmonyPatch(typeof(Harvestable), nameof(Harvestable.Awake))]
         private static class HarvestableAwake
@@ -97,8 +127,30 @@ namespace TinyTweaks
                     harvestedPlants[scene][guid] = GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused();
                 }
             }
+        }        
+        /*
+        [HarmonyPatch(typeof(Harvestable), nameof(Harvestable.Deserialize))]
+        private static class RetroactiveCheck
+        {
+            internal static void Prefix(ref Harvestable __instance, string text, ref bool __state)
+            {
+                __state = !String.IsNullOrEmpty(text);
+            }
+            internal static void Postfix(ref Harvestable __instance, bool __state)
+            {
+                if (lastScene != GameManager.m_ActiveScene)
+                {
+                    lastScene = GameManager.m_ActiveScene;
+                    retroactivePending.Clear();
+                }
+                if (__instance.m_Harvested && __instance.RegisterAsPlantsHaversted && __state)
+                {
+                    string guid = ObjectGuid.GetGuidFromGameObject(__instance.gameObject);
+                    retroactivePending[guid] = GameManager.GetTimeOfDayComponent().GetHoursPlayedNotPaused();
+                }
+            }
         }
-
+        */
 
         [HarmonyPatch(typeof(SaveGameSystem), nameof(SaveGameSystem.SaveSceneData))]
         private static class SaveHarvestTimes
@@ -106,7 +158,8 @@ namespace TinyTweaks
             internal static void Postfix(ref SlotData slot)
             {
                 RegrowSaveData data = new RegrowSaveData() { dictionarySaveProxy = harvestedPlants };
-                string serializedSaveData = JSON.Dump(data);
+                //string serializedSaveData = JSON.Dump(data);
+                string serializedSaveData = JsonSerializer.Serialize(data, Jsoning.GetDefaultOptions());
 
                 dataManager.Save(serializedSaveData, saveDataTag);
             }
@@ -121,7 +174,7 @@ namespace TinyTweaks
                 string? serializedSaveData = dataManager.Load(saveDataTag);
                 RegrowSaveData? data = null;
 
-                if (!string.IsNullOrEmpty(serializedSaveData)) JSON.MakeInto(JSON.Load(serializedSaveData), out data);
+                if (!string.IsNullOrEmpty(serializedSaveData)) data = JsonSerializer.Deserialize<RegrowSaveData?>(serializedSaveData, Jsoning.GetDefaultOptions());//JSON.MakeInto(JSON.Load(serializedSaveData), out data);
 
                 if (data != null && data.dictionarySaveProxy != null)
                 {
@@ -130,6 +183,8 @@ namespace TinyTweaks
 
                 if (routine != null) MelonCoroutines.Stop(routine);
                 routine = MelonCoroutines.Start(CheckHarvestablesForRespawn());
+
+                //AddRetroactivelyCollectedPlants();
 
             }
         }

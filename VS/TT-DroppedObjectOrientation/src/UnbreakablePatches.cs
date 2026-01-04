@@ -4,18 +4,42 @@ namespace TinyTweaks
 {
     public class RotateStuff : MelonMod
     {
-        [HarmonyPatch(typeof(GameManager), "Awake")]
-        public class RotateStuffPatch
+        [HarmonyPatch(typeof(GameManager), nameof(GameManager.InitDelayedComponents))]
+        public static class RotateStuffPatch
         {
             public static void Postfix()
             {
-               
+                MelonLogger.Msg("InitDelayedComponents");
                 GameObject rifle = GearItem.LoadGearItemPrefab("GEAR_Rifle").gameObject;
+                GameObject rifle1 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Barbs").gameObject;
+                GameObject rifle2 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Curators").gameObject;
+                GameObject rifle3 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Vaughns").gameObject;
+                GameObject rifle4 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Trader").gameObject;
                 GameObject matches = GearItem.LoadGearItemPrefab("GEAR_WoodMatches").gameObject;
 
                 if (rifle)
                 {
                     GameObject posDummy = rifle.transform.FindChild("DropDummy").gameObject;
+                    posDummy.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+                }                
+                if (rifle1)
+                {
+                    GameObject posDummy = rifle1.transform.FindChild("DropDummy").gameObject;
+                    posDummy.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+                }                
+                if (rifle2)
+                {
+                    GameObject posDummy = rifle2.transform.FindChild("DropDummy").gameObject;
+                    posDummy.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+                }               
+                if (rifle3)
+                {
+                    GameObject posDummy = rifle3.transform.FindChild("DropDummy").gameObject;
+                    posDummy.transform.eulerAngles = new Vector3(0f, 0f, 270f);
+                }                
+                if (rifle4)
+                {
+                    GameObject posDummy = rifle4.transform.FindChild("DropDummy").gameObject;
                     posDummy.transform.eulerAngles = new Vector3(0f, 0f, 270f);
                 }
 

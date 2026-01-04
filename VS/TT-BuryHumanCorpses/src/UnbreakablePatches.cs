@@ -1,5 +1,7 @@
 ﻿using ModData;
-using MelonLoader.TinyJSON;
+//using MelonLoader.TinyJSON;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace TinyTweaks
 { 
@@ -97,7 +99,8 @@ namespace TinyTweaks
         {
             internal static void Prefix(ref SlotData slot)
             {
-                string serializedSaveData = JSON.Dump(buriedCorpses);
+                //string serializedSaveData = JSON.Dump(buriedCorpses);
+                string serializedSaveData = JsonSerializer.Serialize(buriedCorpses);
 
                 dataManager.Save(serializedSaveData, saveDataTag);
             }
@@ -111,7 +114,8 @@ namespace TinyTweaks
             {
                 string? serializedSaveData = dataManager.Load(saveDataTag);
 
-                if (!string.IsNullOrEmpty(serializedSaveData)) JSON.MakeInto(JSON.Load(serializedSaveData), out buriedCorpses);
+                if (!string.IsNullOrEmpty(serializedSaveData)) 
+                    buriedCorpses = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(serializedSaveData, Jsoning.GetDefaultOptions()) ?? new();//JSON.MakeInto(JSON.Load(serializedSaveData), out buriedCorpses);
 
                 if (buriedCorpses.ContainsKey(GameManager.m_ActiveScene))
                 {
