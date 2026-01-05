@@ -4,12 +4,12 @@ namespace TinyTweaks
 {
     public class RotateStuff : MelonMod
     {
-        [HarmonyPatch(typeof(GameManager), nameof(GameManager.InitDelayedComponents))]
+        [HarmonyPatch(typeof(GameManager), nameof(GameManager.Start))]
         public static class RotateStuffPatch
         {
             public static void Postfix()
             {
-                MelonLogger.Msg("InitDelayedComponents");
+
                 GameObject rifle = GearItem.LoadGearItemPrefab("GEAR_Rifle").gameObject;
                 GameObject rifle1 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Barbs").gameObject;
                 GameObject rifle2 = GearItem.LoadGearItemPrefab("GEAR_Rifle_Curators").gameObject;
