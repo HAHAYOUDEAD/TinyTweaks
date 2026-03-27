@@ -1,7 +1,7 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
-## :floppy_disk: No Save On Sprain
+## :foot: No Save On Sprain
 Prevents autosave on sprains from walking on slopes. Can be toggled for sprains from falls as well
 
 _Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
