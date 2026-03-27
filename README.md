@@ -1,6 +1,11 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
+## :floppy_disk: No Save On Sprain
+Prevents autosave on sprains from walking on slopes. Can be toggled for sprains from falls as well
+
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
+
 ## :alarm_clock: Wakeup Call
 Wake up at will. Also has an option to wake up when aurora starts
 
