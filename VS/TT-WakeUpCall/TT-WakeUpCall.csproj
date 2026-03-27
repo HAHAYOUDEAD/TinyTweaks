@@ -3,7 +3,7 @@
 
     <PropertyGroup>
         <!--This needs to be changed for the mod to compile.-->
-        <TheLongDarkPath>E:\SteamLibrary\steamapps\common\TheLongDark</TheLongDarkPath>
+        <TheLongDarkPath>S:\SteamLibrary\steamapps\common\TheLongDark</TheLongDarkPath>
     </PropertyGroup>
 
     <PropertyGroup>

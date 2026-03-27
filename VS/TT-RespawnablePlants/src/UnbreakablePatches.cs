@@ -78,7 +78,7 @@ namespace TinyTweaks
             yield break;
         }
 
-        /*
+        
         private static void AddRetroactivelyCollectedPlants()
         {
             if (retroactivePending.Count == 0)
@@ -99,7 +99,7 @@ namespace TinyTweaks
             }
             retroactivePending.Clear();
         }
-        */
+        
 
         [HarmonyPatch(typeof(Harvestable), nameof(Harvestable.Awake))]
         private static class HarvestableAwake
@@ -128,7 +128,7 @@ namespace TinyTweaks
                 }
             }
         }        
-        /*
+        
         [HarmonyPatch(typeof(Harvestable), nameof(Harvestable.Deserialize))]
         private static class RetroactiveCheck
         {
@@ -150,7 +150,7 @@ namespace TinyTweaks
                 }
             }
         }
-        */
+        
 
         [HarmonyPatch(typeof(SaveGameSystem), nameof(SaveGameSystem.SaveSceneData))]
         private static class SaveHarvestTimes
@@ -184,7 +184,7 @@ namespace TinyTweaks
                 if (routine != null) MelonCoroutines.Stop(routine);
                 routine = MelonCoroutines.Start(CheckHarvestablesForRespawn());
 
-                //AddRetroactivelyCollectedPlants();
+                AddRetroactivelyCollectedPlants();
 
             }
         }

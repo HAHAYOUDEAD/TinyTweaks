@@ -33,7 +33,7 @@
         <Il2CppPath>$(TheLongDarkPath)/MelonLoader/Il2CppAssemblies</Il2CppPath>
         <ModsPath>$(TheLongDarkPath)/Mods</ModsPath>
         <AssemblySearchPaths>$(AssemblySearchPaths);$(MelonLoaderPath);$(ManagedPath);$(Il2CppPath);$(ModsPath);</AssemblySearchPaths>
-        <AssemblyName>TinyTweaks-RunWithLantern</AssemblyName>
+        <AssemblyName>TinyTweaks-NoSaveOnSprain</AssemblyName>
     </PropertyGroup>
 
     <!--This tells the compiler to not include referenced assemblies in the output folder.-->
@@ -45,6 +45,7 @@
     </ItemDefinitionGroup>
     <ItemGroup>
       <PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.51.0" />
+      <PackageReference Include="STBlade.Modding.TLD.ModSettings" Version="1.9.0" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="ModData">

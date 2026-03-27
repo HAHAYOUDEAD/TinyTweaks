@@ -32,6 +32,9 @@ namespace TinyTweaks
         })]
         public int randomizeRespawnTime;
 
+        [Name("Respawn all plants")]
+        [Description("Respawn every possible plant spawn, even the ones that were rolled harvested at the start of the run\n\nUseful when adding mod mid-save since it will respawn everything that player harvested as well")]
+        public bool respawnAll = false;
 
         protected override void OnConfirm()
         {

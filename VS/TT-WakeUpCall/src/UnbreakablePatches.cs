@@ -5,14 +5,21 @@
 
         private static float fadeAlpha = 0.9f;
         private static bool wentSleepDuringAurora;
+        private static bool gameStarted;
+
         public override void OnInitializeMelon()
         {
             Settings.OnLoad();
         }
 
+        public override void OnSceneWasInitialized(int buildIndex, string sceneName)
+        {
+            gameStarted = true;
+        }
+
         public override void OnUpdate()
         {
-            if (InputManager.GetPauseMenuTogglePressed(InputManager.m_CurrentContext))
+            if (gameStarted && InputManager.GetPauseMenuTogglePressed(InputManager.m_CurrentContext))
             {
                 if (GameManager.GetRestComponent().IsSleeping())
                 {
