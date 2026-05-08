@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TT-WakeUpCall", "TT-WakeUpC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TT-NoSaveOnSprain", "TT-NoSaveOnSprain\TT-NoSaveOnSprain.csproj", "{78D51742-57F1-4DB9-8D7E-494812148F1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TT-SpeedyInteractions", "TT-SpeedyInteractions\TT-SpeedyInteractions.csproj", "{B0E8786A-6093-487D-BDE6-18E3E02654AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{78D51742-57F1-4DB9-8D7E-494812148F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78D51742-57F1-4DB9-8D7E-494812148F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78D51742-57F1-4DB9-8D7E-494812148F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E8786A-6093-487D-BDE6-18E3E02654AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E8786A-6093-487D-BDE6-18E3E02654AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E8786A-6093-487D-BDE6-18E3E02654AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E8786A-6093-487D-BDE6-18E3E02654AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		Global\Global.projitems*{78d51742-57f1-4db9-8d7e-494812148f1a}*SharedItemsImports = 5
 		Global\Global.projitems*{7f362f48-5cf0-4e84-ba4e-212944d479fa}*SharedItemsImports = 5
 		Global\Global.projitems*{87ec8bf9-67f4-4dae-a104-5dfa56472bc3}*SharedItemsImports = 5
+		Global\Global.projitems*{b0e8786a-6093-487d-bde6-18e3e02654af}*SharedItemsImports = 5
 		Global\Global.projitems*{b5303e1e-0539-4b78-adb5-bf1bac915696}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
