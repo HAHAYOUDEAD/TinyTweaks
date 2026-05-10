@@ -1,6 +1,11 @@
 # [Tiny Tweaks]
 Assortment of tiniest mods, too small to create separate repositories
 
+## :checkered_flag: Speedy Interactions
+Adjusts any interaction speeds: crafting, repair, harvesting, eating etc.
+
+_Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
+
 ## :foot: No Save On Sprain
 Prevents autosave on sprains from walking on slopes. Can be toggled for sprains from falls as well
 
@@ -47,7 +52,7 @@ Mainly for challenge runs I guess? It was a request from community, so here you 
 _Requires [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/releases)_
 
 ## :herb: Plants regrow 
-Respawn plants after certain amount of time
+Respawn plants after certain amount of time, this includes anything that grows, i.e. saplings, lichen, mushrooms, acorns etc.
 
 _Requires [ModData](https://github.com/dommrogers/ModData/releases) and [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases)_
 
