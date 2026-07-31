@@ -66,6 +66,7 @@ namespace TinyTweaks
         protected override void OnConfirm()
         {
             base.OnConfirm();
+            SpeedyInteractions.ApplySpeedsToLoadedPanels();
         }
     }
 
