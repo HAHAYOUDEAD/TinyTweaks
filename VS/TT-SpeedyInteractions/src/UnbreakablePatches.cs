@@ -181,11 +181,10 @@ namespace TinyTweaks
         {
             internal static void Prefix(Panel_BreakDown __instance)
             {
-                if (Settings.options.globalSpeedMult != 1f)
-                {
-                    __instance.m_SecondsToBreakDown = genericSliderTime / Settings.options.breakdownSpeedMult;
-
-                }
+                // Not gated on != 1f: the panel keeps using this value while the action runs,
+                // so it cannot be restored in a postfix. Writing it every time means 1x puts
+                // the stock value back instead of leaving the panel stuck at the last speed.
+                __instance.m_SecondsToBreakDown = genericSliderTime / Settings.options.breakdownSpeedMult;
             }
         }
 
