@@ -18,6 +18,42 @@ namespace TinyTweaks
         }
 
 
+        internal static void ApplySpeedsToLoadedPanels()
+        {
+            float g = Settings.options.globalSpeedMult;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_BreakDown>())
+                p.m_SecondsToBreakDown = genericSliderTime / Settings.options.breakdownSpeedMult;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_Crafting>())
+                p.m_CraftingDisplayTimeSeconds = craftingSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_Cooking>())
+                p.m_RecipePreparationDisplayTimeSeconds = craftingSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_Milling>())
+                p.m_RepairRealTimeSeconds = craftingSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_SnowShelterBuild>())
+                p.m_RealtimeSecondsToBuild = genericSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_SnowShelterInteract>())
+                p.m_RealtimeSecondsToRepairOrDismantle = genericSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_PickWater>())
+                p.m_ProgressBarDurationSecondsBase = shortSliderTime / g;
+
+            foreach (var p in Resources.FindObjectsOfTypeAll<Panel_IceFishingHoleClear>())
+                p.m_ProgressBarSeconds = longSliderTime / g;
+
+            foreach (var rc in Resources.FindObjectsOfTypeAll<RockCache>())
+            {
+                rc.m_BuildRealSecondsElapsed = Mathf.CeilToInt(shortSliderTime / g);
+                rc.m_DismantleRealSecondsElapsed = Mathf.CeilToInt(shortSliderTime / g);
+            }
+        }
+
+
         [HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.UseFoodInventoryItem))]
         private static class EatingSpeed
         {
@@ -181,7 +217,7 @@ namespace TinyTweaks
         {
             internal static void Prefix(Panel_BreakDown __instance)
             {
-                if (Settings.options.globalSpeedMult != 1f)
+                if (Settings.options.breakdownSpeedMult != 1f)
                 {
                     __instance.m_SecondsToBreakDown = genericSliderTime / Settings.options.breakdownSpeedMult;
 
